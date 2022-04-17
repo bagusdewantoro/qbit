@@ -28,24 +28,27 @@ const Login = ({ login, setLogin }) => {
   }
   return (
     <div>
-      <h1>Login</h1>
       <form
         autoComplete='off'
         onSubmit={handleSubmit}
       >
+        <label htmlFor='username'>Username</label>
         <input
+          id='username'
           type='text'
           placeholder='Enter Username'
           value={username}
           onChange={handleUsername}
         />
+        <label htmlFor='password'>Password</label>
         <input
+          id='password'
           type='password'
           placeholder='Enter Password'
           value={password}
           onChange={handlePassword}
         />
-        <button type='submit'>Login</button>
+        <button className='accent-button' type='submit'>Login</button>
       </form>
     </div>
   );

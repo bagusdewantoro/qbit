@@ -8,19 +8,21 @@ import credentials from '../credentials';
 
 const Posting = () => {
   const [postData, setPostData] = useState({
-    title: '', message: '', status: 0
+    title: '', content: '', posting: 0
   })
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addItem(postData));
-    setPostData({...postData, title: '', message: '', status: 0})
+    if (postData.title.trim() === '' || postData.content.trim() === '') alert('Title and Content Fields are Required')
+    else {
+      dispatch(addItem(postData));
+      setPostData({...postData, title: '', content: '', posting: 0})
+    }
   };
 
   return (
     <div>
-      <h1>Posting</h1>
       {
         localStorage.getItem('auth-token') !==  credentials.token ? (
           <p>Please {<Link to='/login'>login</Link>} first to access this section</p>
@@ -28,25 +30,25 @@ const Posting = () => {
           <div>
             <form autoComplete='off' noValidate onSubmit={handleSubmit}>
               <div>
-                <label>Title</label>
+                <label htmlFor='title'>Title</label>
                 <input
-                  type='text' placeholder='Input Title...' value={postData.title}
+                  id='title' type='text' placeholder='Input Title...' value={postData.title}
                   onChange={(e) => setPostData({ ...postData, title: e.target.value})}
                 />
-                <label>Message</label>
+                <label htmlFor='content'>Content</label>
                 <input
-                  type='text' placeholder='Input Message...' value={postData.message}
-                  onChange={(e) => setPostData({ ...postData, message: e.target.value})}
+                  id='content' type='text' placeholder='Input Message...' value={postData.content}
+                  onChange={(e) => setPostData({ ...postData, content: e.target.value})}
                 />
-                <label>Status (1 to publish | 0 for draft)</label>
+                <label htmlFor='posting'>Posting (1 for posting | 0 for draft)</label>
                 <select
-                  value={postData.status}
-                  onChange={(e) => setPostData({ ...postData, status: Number(e.target.value)})}
+                  id='posting' value={postData.posting}
+                  onChange={(e) => setPostData({ ...postData, posting: Number(e.target.value)})}
                 >
                   <option value='0'>0</option>
                   <option value='1'>1</option>
                 </select>
-                <input type='submit' />
+                <input type='submit' className='accent-button'/>
               </div>
             </form>
             <PostData />

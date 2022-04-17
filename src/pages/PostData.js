@@ -8,12 +8,12 @@ const Post = ({ post }) => {
     dispatch(updateItem(post[0]))
   }
   return (
-    <div>
-      <h3>{post[1].title}</h3>
-      <p>{post[1].message}</p>
+    <div className='post'>
+      <h5>{post[1].title}</h5>
+      <p>{post[1].content}</p>
       <input
         type='checkbox'
-        checked={post[1].status}
+        checked={post[1].posting}
         onChange={handleCheckbox}
       />
     </div>
@@ -24,9 +24,9 @@ const PostData = () => {
   const posts = useSelector((state) => state.post);
   return (
     !posts.length ?
-    <h3>There is no post</h3> :
+    <p>There is no post yet</p> :
     (
-      <div>
+      <div className='container'>
         { posts.map(post => (
           <Post key={post[0]} post={post} />
         ))}
