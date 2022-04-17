@@ -16,7 +16,7 @@ const Home = () => {
       {!posts.length ?
         <p>There is no post yet</p> :
         (
-          <div className='container'>
+          <div className='full-container'>
             { posts
               .filter(p => p[1].posting === 1)
               .map(post => (<Filtered key={post[0]} post={post} />))

@@ -26,7 +26,7 @@ const PostData = () => {
     !posts.length ?
     <p>There is no post yet</p> :
     (
-      <div className='container'>
+      <div className='full-container'>
         { posts.map(post => (
           <Post key={post[0]} post={post} />
         ))}

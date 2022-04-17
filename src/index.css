@@ -574,10 +574,8 @@ dd {
 }
 
 .post {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  max-width: 100%;
+  padding: 0 1rem;
   border: 1px solid #dedede;
   border-radius: 4px;
   padding: 0rem 0rem 0rem 0.75rem;

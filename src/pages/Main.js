@@ -2,7 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 const Main = ({ login, handleLogout }) => {
   return (
-    <div className='container'>
+    <div className='full-container'>
       <h1>My Pages</h1>
       <nav>
         <Link to='/'><button>Home</button></Link>  {' '}
