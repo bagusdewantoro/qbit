@@ -1,13 +1,13 @@
-export const addItem = payload => {
+export const addItem = data => {
   return {
     type: "ADD",
-    payload
+    payload: data
   };
 };
 
-// export const addAuth = payload => {
-//   return {
-//     type: "AUTH",
-//     payload
-//   };
-// };
+export const updateItem = id => {
+  return {
+    type: "UPDATE",
+    payload: id
+  }
+};

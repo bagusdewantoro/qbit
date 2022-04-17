@@ -8,14 +8,14 @@ import credentials from '../credentials';
 
 const Posting = () => {
   const [postData, setPostData] = useState({
-    id:0, title: '', message: '', status: 0
+    title: '', message: '', status: 0
   })
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addItem(postData));
-    setPostData({...postData, id: postData.id + 1, title: '', message: '', status: 0})
+    setPostData({...postData, title: '', message: '', status: 0})
   };
 
   return (
@@ -38,6 +38,14 @@ const Posting = () => {
                   type='text' placeholder='Input Message...' value={postData.message}
                   onChange={(e) => setPostData({ ...postData, message: e.target.value})}
                 />
+                <label>Status (1 to publish | 0 for draft)</label>
+                <select
+                  value={postData.status}
+                  onChange={(e) => setPostData({ ...postData, status: Number(e.target.value)})}
+                >
+                  <option value='0'>0</option>
+                  <option value='1'>1</option>
+                </select>
                 <input type='submit' />
               </div>
             </form>
